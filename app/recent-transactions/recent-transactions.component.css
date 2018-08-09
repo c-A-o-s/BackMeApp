@@ -1,0 +1,38 @@
+.mat-card {
+  padding: 0;
+  margin: 12px;
+}
+
+.mat-table {
+  margin: 0;
+  width: 100%;
+}
+
+.header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+p {
+  display: inline-grid;
+  margin: 5px 0 5px 0;
+}
+
+.mat-cell{
+  padding:10px;
+}
+
+p > span {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+}

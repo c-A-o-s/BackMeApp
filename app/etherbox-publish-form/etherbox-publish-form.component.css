@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+.mat-form-field {
+  padding: 7px 0 7px 0;
+}
+
+.publish {
+  font-weight: bold;
+}
+
+.estimation {
+  margin: 0px;
+  font-weight: normal;
+}

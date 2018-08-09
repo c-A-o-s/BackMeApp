@@ -1,0 +1,97 @@
+<mat-card>
+
+<mat-toolbar>
+<button
+  mat-icon-button
+  [routerLink]="['/']">
+<mat-icon>arrow_back</mat-icon>
+</button>
+<span>EtherBox Details</span>
+<span class="space"></span>
+<button
+  mat-icon-button
+  *ngIf="isOwner"
+  matTooltip="Delete EtherBox"
+  matTooltipPosition="above"
+  (click)="deleteEtherBox()"
+  [disabled]="!isExpired">
+<mat-icon>delete</mat-icon>
+</button>
+
+<a
+  [href] = "document.location.origin+'/stream/'+address"
+  target="_blank"
+  *ngIf="!isExpired"
+  >
+<button
+  mat-icon-button
+  *ngIf="isOwner"
+  matTooltip="Stream Messages"
+  matTooltipPosition="above"
+  [disabled]="isExpired">
+  <mat-icon>launch</mat-icon>
+</button>
+</a>
+
+<button
+  mat-icon-button
+  (click) = "showEtherBoxUrl()"
+  matTooltip="Share EtherBox">
+<mat-icon>share</mat-icon>
+</button>
+</mat-toolbar>
+
+<mat-progress-bar
+  *ngIf="isLoading"
+  color="primary"
+  mode="indeterminate">
+</mat-progress-bar>
+
+<mat-nav-list
+  *ngIf="!isLoading">
+<a
+  mat-list-item
+  target='_blank'
+  [href]="'https://etherscan.io/address/'+ownerAddress">
+<p mat-line>Owner:</p>
+<h2 mat-line>{{ownerAddress || '0x0' | lowercase}}</h2>
+</a>
+
+<mat-list-item>
+<p mat-line>Expiration:</p>
+<h2 mat-line>{{ expiration || 0 | date: 'dd-MM-yyyy HH:mm:ss' | lowercase}}</h2>
+</mat-list-item>
+
+<mat-list-item>
+<p mat-line>Label:</p>
+<h2 mat-line>{{etherBoxLabel || "Unlabeled"}}</h2>
+</mat-list-item>
+
+<a
+  mat-list-item
+  target='_blank'
+  [href]="ownerUrl">
+<p mat-line>Url:</p>
+<p mat-line><span >{{ownerUrl || "None" | lowercase }}</span></p>
+</a>
+
+</mat-nav-list>
+
+<mat-toolbar
+  color="primary"
+  class="flexRow">
+<button
+  mat-raised-button
+  (click)="esteem()"
+  class="esteem"
+  [disabled]="isExpired">
+<mat-icon>money</mat-icon>
+<span> Esteem!</span>
+</button>
+</mat-toolbar>
+
+<app-esteem-list
+  [etherBoxAddress]="address">
+</app-esteem-list>
+
+</mat-card>

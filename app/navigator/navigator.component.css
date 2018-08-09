@@ -1,0 +1,12 @@
+.logo-text {
+  font-weight: bold;
+  margin-left: 6px;
+}
+
+.space {
+  flex: 1 1 auto;
+}
+
+.transparent {
+  background-color: transparent;
+}

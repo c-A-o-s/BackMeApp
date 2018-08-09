@@ -1,0 +1,40 @@
+.mat-table {
+  margin: 0;
+  width: 100%;
+}
+
+.header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.mat-cell {
+  padding:10px;
+}
+
+p {
+  display: inline-grid;
+  margin: 5px 0 5px 0;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content:flex-start;
+  align-items:flex-start;
+  align-content: flex-start;
+}
+
+.container > * {
+  word-break: break-all;
+}
+
+a {
+  text-decoration: none;
+}

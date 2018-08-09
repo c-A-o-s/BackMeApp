@@ -1,0 +1,4 @@
+<app-navigator *ngIf="!isStream" ></app-navigator>
+<mat-progress-bar *ngIf="isLoading" color="primary" mode="indeterminate"></mat-progress-bar>
+<router-outlet *ngIf="webtree && nodesAvailable"></router-outlet>
+<mat-card *ngIf="!webtree && !isLoading"><h1>MetaMask is required to run this app. <a href="https://metamask.io" target="_blank">Download it!</a></h1></mat-card>

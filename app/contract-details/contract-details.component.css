@@ -1,0 +1,40 @@
+mat-card {
+  padding: 0;
+  margin: 12px;
+}
+
+.space {
+  flex: 1 1 auto;
+}
+
+.flexRow {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.mat-nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: flex-start;
+  padding:0;
+}
+
+.mat-list-item {
+  flex: 0 1 auto;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.esteem {
+  background-color: #a5ff8c;
+  font-weight: bold;
+}
+
+a {
+  color:black;
+}

@@ -1,0 +1,55 @@
+<div class="container">
+
+<mat-form-field
+  appearance="outline"
+  hintLabel="{{getBytesLegth(nickname)}}/32 Bytes">
+<mat-label>Nickname</mat-label>
+<input
+  matInput (keyup)="getEstimation()"
+  placeholder="Nickname"
+  [(ngModel)]="nickname"
+  maxlength="32"
+  [errorStateMatcher]="nicknameErrorStateMatcher">
+<mat-error>Max bytes reached!</mat-error>
+</mat-form-field>
+
+<mat-form-field
+  appearance="outline"
+  hintLabel="{{getBytesLegth(message)}}/300 Bytes">
+<mat-label>Message</mat-label>
+<textarea
+  matInput
+  matTextareaAutosize="true"
+  (keyup)="getEstimation()"
+  placeholder="Message"
+  maxlength="300"
+  [(ngModel)]="message"
+  [errorStateMatcher]="messageErrorStateMatcher">
+</textarea>
+<mat-error>Max bytes reached!</mat-error>
+</mat-form-field>
+
+<mat-form-field
+  appearance="outline"
+  hintLabel="Minimum: {{minEsteemAmount}}">
+<mat-label>Amount ETH</mat-label>
+<input
+  matInput
+  (change)="getEstimation()"
+  placeholder="Amount"
+  type="number"
+  [(ngModel)]="amount"
+  step="0.001"
+  [min]="minEsteemAmount">
+</mat-form-field>
+<button
+  mat-raised-button
+  class="esteem"
+  matTooltip="Send Message"
+  matTooltipPosition="above"
+  (click)="send()">
+<mat-icon>money</mat-icon> ESTEEM!
+<p class="estimation">Gas Est.: {{gasEstimation}}</p>
+</button>
+
+</div>

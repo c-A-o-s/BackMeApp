@@ -1,0 +1,21 @@
+.container {
+  background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+  color: #fefefe;
+}
+
+h1 {text-shadow: 1px 1px black;}
+
+p {color: blue;}
+
+/deep/ .mat-snack-bar-container{
+  background: yellow;
+  width: 500px;
+  padding-top:80px;
+  background-color: transparent;
+  word-break: break-all;
+
+}
+
+/deep/  .mat-snack-bar-handset {
+  width: 500px;
+}

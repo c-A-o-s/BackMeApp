@@ -1,0 +1,43 @@
+<mat-toolbar><span>Recent Esteem</span></mat-toolbar>
+
+<div class="header">
+<mat-form-field>
+<input
+  matInput
+  (keyup)="applyFilter($event.target.value)"
+  placeholder="Filter">
+</mat-form-field>
+</div>
+
+<div class="table-container">
+<table
+  mat-table
+  #table
+  [dataSource]="dataSource">
+
+<ng-container matColumnDef="time">
+<th mat-header-cell *matHeaderCellDef>Time</th>
+<td mat-cell *matCellDef="let element;">
+<p><span>{{element.timestamp | date: 'dd-MM-yyyy HH:mm'}}</span></p>
+</td>
+</ng-container>
+
+<ng-container matColumnDef="message">
+<th mat-header-cell *matHeaderCellDef>Action</th>
+<td mat-cell *matCellDef="let element">
+<span class='container'>
+<p><span>{{element.amount}} ETH => <a target='_blank' [href]="'https://etherscan.io/address/'+element.senderAddress">{{element.senderNickname}}</a></span></p>
+<p><span class="message"><a target='_blank' [href]="'https://etherscan.io/tx/'+element.transactionHash">{{element.message || 'No Message'}}</a></span></p>
+</span>
+</td>
+</ng-container>
+
+<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator
+  [pageSizeOptions]="[5, 10, 20]"
+  showFirstLastButtons>
+</mat-paginator>
+</div>

@@ -1,0 +1,66 @@
+<div class="container">
+
+<mat-form-field
+  appearance="outline"
+  hintLabel="{{getBytesLegth(label)}}/32 Bytes">
+<mat-label>Label</mat-label>
+<input
+  matInput
+  (keyup)="getEstimation()"
+  placeholder="Label"
+  [(ngModel)]="label"
+  maxlength="32"
+  [errorStateMatcher]="labelErrorStateMatcher">
+<mat-error>Max bytes reached!</mat-error>
+</mat-form-field>
+
+<mat-form-field
+  appearance="outline"
+  hintLabel="{{getBytesLegth(ownerUrl)}}/200 Bytes">
+<mat-label>Url</mat-label>
+<input
+  matInput
+  (keyup)="getEstimation()"
+  placeholder="Url"
+  [(ngModel)]="ownerUrl"
+  maxlength="200"
+  [errorStateMatcher]="urlErrorStateMatcher">
+<mat-error>Max bytes reached!</mat-error>
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+<mat-label>Support the Devs! - ETH</mat-label>
+<input
+  matInput
+  (change)="getEstimation()"
+  placeholder="Donation"
+  type="number"
+  [(ngModel)]="tip"
+  step='0.001'
+  min="0">
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+<mat-label>Lifespan Minutes</mat-label>
+<input
+  matInput
+  (change)="getEstimation()"
+  placeholder="Time"
+  type="number"
+  [(ngModel)]="lifespan"
+  min="1"
+  required>
+</mat-form-field>
+
+<button
+  mat-raised-button
+  color="accent"
+  class="publish" 
+  matTooltip="Publish EtherBox"
+  matTooltipPosition="above"
+  (click)="send()">
+<mat-icon>public</mat-icon> PUBLISH
+<p class="estimation">Gas Est.: {{gasEstimation}}</p>
+</button>
+
+</div>

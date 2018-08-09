@@ -1,0 +1,60 @@
+<mat-card>
+
+<mat-toolbar>
+<span>My EtherBoxes</span>
+<span class="space"></span>
+<button
+  mat-icon-button
+  matTooltip="Publish New EtherBox"
+  (click)="publishEtherBox()">
+<mat-icon>create</mat-icon>
+</button>
+</mat-toolbar>
+
+<mat-progress-bar
+  *ngIf="isLoading"
+  color="primary"
+  mode="indeterminate">
+</mat-progress-bar>
+
+<mat-tab-group
+  *ngIf="!isLoading"
+  (selectedTabChange)="onTabChange($event)">
+
+<mat-tab label="Published">
+<mat-nav-list>
+<mat-list-item
+  *ngFor="let etherBox of etherBoxes | expired:false"
+  [routerLink]="['/detail/', etherBox.address]">
+<p mat-line>{{etherBox.label || "Unlabeled"}}</p>
+<h2 mat-line>Expiration: {{etherBox.expiration | date: 'dd-MM-yyyy HH:mm'}}</h2>
+</mat-list-item>
+
+<mat-list-item
+  *ngIf="!etherBoxes.length"
+  (click)="publishEtherBox()">
+<p mat-line class="center-text">Empty. Publish New EtherBox!</p>
+</mat-list-item>
+</mat-nav-list>
+</mat-tab>
+
+<mat-tab label="Expired">
+<mat-nav-list>
+<mat-list-item
+  *ngIf="!etherBoxes.length"
+  (click)="publishEtherBox()">
+<p mat-line class="center-text">Empty. Publish New EtherBox!</p>
+</mat-list-item>
+
+<mat-list-item
+  *ngFor="let etherBox of etherBoxes | expired:true"
+  [class.deleting]="isPending(etherBox)"
+  [routerLink]="['/detail/', etherBox.address]">
+<p mat-line>{{etherBox.label || "Unlabeled"}}</p>
+<h2 mat-line>Expiration: {{etherBox.expiration | date: 'dd-MM-yyyy HH:mm:ss'}}</h2>
+</mat-list-item>
+</mat-nav-list>
+</mat-tab>
+
+</mat-tab-group>
+</mat-card>
